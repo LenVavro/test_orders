@@ -13,8 +13,10 @@
     "@tabler/icons-react": "^3.0.0-alpha.1",
     "@tanstack/react-query": "^5.18.1",
     "dayjs": "^1.11.10",
+    "i18next": "^23.8.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-i18next": "^14.0.5"
   },
   "devDependencies": {
     "@types/react": "^18.2.55",

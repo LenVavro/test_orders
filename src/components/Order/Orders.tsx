@@ -1,11 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { OrderStateType, OrderType, OrderViewEnum } from "../../types/order";
 import Order from "./Order";
 import OrderViewItem from "./OrderViewItem";
 
 export default function Orders() {
-  const t = (str: string) => str;
+  const { t } = useTranslation();
 
   const [view, setView] = useState<OrderViewEnum>("PENDING");
 

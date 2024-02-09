@@ -1,8 +1,9 @@
 import { IconCalendarClock, IconCircleX } from "@tabler/icons-react";
 import dayjs from "dayjs";
+import { useTranslation } from "react-i18next";
+import { useOrderMenuItemName } from "../../hooks/useOrderMenuItemName";
 import { OrderType } from "../../types/order";
 import { formatPrice } from "../../utils";
-import { parseOrderStatus } from "../../utils/order";
 import UnstyledButton from "../ui/UnstyledButton";
 
 type PropsType = { order: OrderType };
@@ -10,10 +11,12 @@ type PropsType = { order: OrderType };
 export default function OrderItem({
   order: { createdAt, id, orderItems, state, totalPrice },
 }: PropsType) {
-  const t = (str: string) => str;
-  const lang = "en";
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language;
 
   const createdAtDayjs = dayjs(createdAt);
+
+  const getMenuItemName = useOrderMenuItemName();
 
   return (
     <div className="overflow-clip rounded-lg bg-white text-primary">
@@ -36,7 +39,7 @@ export default function OrderItem({
             {orderItems.map(({ orderMenuItem, finalPrice, quantity }, i) => (
               <li key={i} className="flex items-center gap-2">
                 <p className="min-w-[2rem] font-medium">{quantity}x</p>
-                <p>{orderMenuItem.translations[lang].name}</p>
+                <p>{getMenuItemName(orderMenuItem)}</p>
                 <p className="ml-auto">{formatPrice(finalPrice, lang)}</p>
               </li>
             ))}
@@ -55,7 +58,7 @@ export default function OrderItem({
           </UnstyledButton>
 
           <p className="truncate rounded-full bg-secondary px-3 py-1 text-xs font-bold sm:px-4 sm:text-sm">
-            {t(parseOrderStatus(state))}
+            {t(state)}
           </p>
         </div>
       </div>

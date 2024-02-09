@@ -1,4 +1,5 @@
 import { IconCircleCheck, IconProgressCheck } from "@tabler/icons-react";
+import { useTranslation } from "react-i18next";
 import { OrderViewEnum } from "../../types/order";
 import { parseOrderView } from "../../utils/order";
 import UnstyledButton from "../ui/UnstyledButton";
@@ -10,7 +11,7 @@ type PropsType = {
 };
 
 export default function OrderViewItem({ view, isActive, onClick }: PropsType) {
-  const t = (str: string) => str;
+  const { t } = useTranslation();
 
   // const Icon = view === "COMPLETED" ? IconCircleCheck : IconCircleDashed;
   const Icon = view === "COMPLETED" ? IconCircleCheck : IconProgressCheck;
