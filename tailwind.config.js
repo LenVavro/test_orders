@@ -2,7 +2,20 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    fontFamily: { serif: "'Lora', serif" },
+    extend: {
+      colors: {
+        primary: {
+          light: "#102C3B",
+          DEFAULT: "#032131",
+        },
+        secondary: {
+          lightest: "#FFDEDC",
+          light: "#E9D2CB",
+          DEFAULT: "#FF918A",
+        },
+      },
+    },
   },
   plugins: [],
 };
