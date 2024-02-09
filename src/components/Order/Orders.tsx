@@ -66,7 +66,7 @@ export default function Orders() {
         />
       </div>
 
-      <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2">
+      <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
         {isSuccess &&
           orders.map((order) => <Order key={order.id} order={order} />)}
       </div>

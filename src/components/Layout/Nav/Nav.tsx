@@ -13,7 +13,7 @@ export default function Nav({ className = "" }: PropsType) {
 
   return (
     <nav className={`${className}`}>
-      <ul className="grid grid-cols-3 justify-evenly md:justify-normal md:gap-4 lg:gap-8">
+      <ul className="grid grid-cols-3 justify-evenly md:justify-normal md:gap-2 lg:gap-4">
         <NavItem icon={IconUserSquare} label={t("Account")} />
         <NavItem icon={IconList} label={t("Orders")} isActive />
         <NavItem icon={IconToolsKitchen2} label={t("Menu")} />
