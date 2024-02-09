@@ -5,6 +5,7 @@ import { OrderType, OrderViewEnum } from "../../types/order";
 import { isOrderPending } from "../../utils/order";
 import Order from "./Order";
 import OrderViewItem from "./OrderViewItem";
+import OrderSkeleton from "./misc/OrderSkeleton";
 
 export default function Orders() {
   const { t } = useTranslation();
@@ -64,7 +65,24 @@ export default function Orders() {
       <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
         {isSuccess &&
           orders.map((order) => <Order key={order.id} order={order} />)}
+
+        {isLoading && (
+          <>
+            <OrderSkeleton />
+            <OrderSkeleton />
+            <OrderSkeleton />
+            <OrderSkeleton />
+          </>
+        )}
       </div>
+
+      {isError && (
+        <div className="rounded-lg bg-red-600 p-4 text-red-50">
+          <p className="text-lg font-semibold">{t("Error")}</p>
+
+          <p className="mt-4">{t(error.message) ?? t("Unknown error")}</p>
+        </div>
+      )}
     </>
   );
 }

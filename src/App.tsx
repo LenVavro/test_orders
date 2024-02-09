@@ -1,4 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import Layout from "./components/Layout/Layout";
@@ -33,6 +34,7 @@ i18n
           failed: "Neúspešná",
           "Unknown item": "Neznáma položka",
           "Unable to load orders": "Nepodarilo sa načítať objednávky",
+          "Unknown error": "Nastala neznáma chyba",
         },
       },
       en: {
@@ -62,6 +64,7 @@ function App() {
       <Layout>
         <Orders />
       </Layout>
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
 }
