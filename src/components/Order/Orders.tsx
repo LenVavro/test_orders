@@ -51,7 +51,7 @@ export default function Orders() {
   });
 
   return (
-    <section className="mt-10">
+    <>
       <div className="grid grid-flow-row gap-2 overflow-hidden rounded-lg bg-white p-2 font-semibold text-primary md:grid-flow-col">
         <OrderViewItem
           view="PENDING"
@@ -69,6 +69,6 @@ export default function Orders() {
         {isSuccess &&
           orders.map((order) => <Order key={order.id} order={order} />)}
       </div>
-    </section>
+    </>
   );
 }
