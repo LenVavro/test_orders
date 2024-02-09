@@ -1,5 +1,5 @@
 import { stringSentenceCase } from ".";
-import { OrderViewEnum } from "../types/order";
+import { OrderStateType, OrderType, OrderViewEnum } from "../types/order";
 
 /**
  *
@@ -8,4 +8,19 @@ import { OrderViewEnum } from "../types/order";
  */
 export function parseOrderView(view: OrderViewEnum) {
   return stringSentenceCase(view);
+}
+
+/**
+ *
+ * @param state
+ * @returns
+ */
+export function isOrderPending(state: OrderType["state"]) {
+  const pendingStates: OrderStateType[] = [
+    "new",
+    "waiting_for_confirmation",
+    "confirmed",
+  ];
+
+  return pendingStates.includes(state);
 }

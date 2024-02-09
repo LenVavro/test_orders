@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useOrderMenuItemName } from "../../hooks/useOrderMenuItemName";
 import { OrderType } from "../../types/order";
 import { formatPrice } from "../../utils";
+import { isOrderPending } from "../../utils/order";
 import UnstyledButton from "../ui/UnstyledButton";
 
 type PropsType = { order: OrderType };
@@ -20,7 +21,7 @@ export default function OrderItem({
 
   return (
     <div className="overflow-clip rounded-lg bg-white text-primary">
-      <div className="bg-secondary-lightest sticky top-0 z-10 p-4 font-semibold sm:text-lg md:static">
+      <div className="sticky top-0 z-10 bg-secondary-lightest p-4 font-semibold sm:text-lg md:static">
         {id}
       </div>
 
@@ -52,14 +53,16 @@ export default function OrderItem({
         </div>
 
         <div className="mt-auto flex items-center justify-between gap-4 gap-y-2">
-          <UnstyledButton className="flex items-center gap-1 text-sm font-medium text-primary/80">
-            <IconCircleX size="1rem" />
-            <p>{t("Cancel")}</p>
-          </UnstyledButton>
-
           <p className="truncate rounded-full bg-secondary px-3 py-1 text-xs font-bold sm:px-4 sm:text-sm">
             {t(state)}
           </p>
+
+          {isOrderPending(state) && state !== "confirmed" && (
+            <UnstyledButton className="flex items-center gap-1 text-sm font-medium text-primary/80">
+              <IconCircleX size="1rem" />
+              <p>{t("Cancel")}</p>
+            </UnstyledButton>
+          )}
         </div>
       </div>
     </div>

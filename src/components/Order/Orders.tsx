@@ -1,7 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { OrderStateType, OrderType, OrderViewEnum } from "../../types/order";
+import { OrderType, OrderViewEnum } from "../../types/order";
+import { isOrderPending } from "../../utils/order";
 import Order from "./Order";
 import OrderViewItem from "./OrderViewItem";
 
@@ -37,17 +38,11 @@ export default function Orders() {
 
     // In real world application filtering will be done on backend using param in url
     select: (orders) => {
-      const pendingStates: OrderStateType[] = [
-        "new",
-        "waiting_for_confirmation",
-        "confirmed",
-      ];
-
       if (view === "COMPLETED") {
-        return orders.filter(({ state }) => !pendingStates.includes(state));
+        return orders.filter(({ state }) => !isOrderPending(state));
       }
 
-      return orders.filter(({ state }) => pendingStates.includes(state));
+      return orders.filter(({ state }) => isOrderPending(state));
     },
   });
 
