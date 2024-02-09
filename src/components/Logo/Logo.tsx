@@ -4,6 +4,9 @@ type PropsType = Omit<ComponentProps<"svg">, "viewBox" | "fill" | "xmlns">;
 
 export default function Logo(props: PropsType) {
   return (
+    /* 
+     SOURCE: https://menu.sunrero.space/0dbfee1d-af9d-4489-ad9a-0c402907a028/
+    */
     <svg
       {...props}
       viewBox="0 0 240 68"
