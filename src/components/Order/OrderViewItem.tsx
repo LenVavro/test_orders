@@ -19,7 +19,6 @@ export default function OrderViewItem({ view, isActive, onClick }: PropsType) {
 
   return (
     <UnstyledButton
-      key={view}
       onClick={onClick}
       className={`${isActive ? "bg-secondary" : "hover:bg-secondary/40"} flex w-full items-center justify-center gap-2 rounded p-4 text-lg transition-colors`}
     >

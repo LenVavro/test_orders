@@ -1,11 +1,10 @@
 import { IconProps } from "@tabler/icons-react";
+import { ElementType } from "react";
 import { useScreen } from "../../../hooks/useScreen";
 import UnstyledButton from "../../ui/UnstyledButton";
 
 type PropsType = {
-  icon: React.ForwardRefExoticComponent<
-    Omit<IconProps, "ref"> & React.RefAttributes<SVGSVGElement>
-  >;
+  icon: ElementType<Pick<IconProps, "size">>;
   label: string;
   isActive?: boolean;
 };
